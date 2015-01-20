@@ -15,15 +15,15 @@ Run the app locally with the following command (assuming `java` is on the path):
 $ java -jar build/libs/hystrix-sample.jar
 ~~~
 
+Hitting the `/hystrix.stream` endpoint in the app should display a stream of `ping` responses to the client (e.g. browser, curl, wget).
+
 Push to Cloud Foundry with the included `manifest.yml`:
 
 ~~~
 $ cf push
 ~~~
 
-Hitting the `/hystrix.stream` endpoint in the app should display a stream of `ping` responses to the client. This works when the app is run locally.
-
-When running the app on PCF or PWS, the client (e.g. browser, curl or wget) hangs on the first request to the `/hystrix.stream` endpoint. No `RTR` messages appear in the app logs showing that the request was received.
+When running the app on PCF or PWS, the client hangs on the first request to the `/hystrix.stream` endpoint. No `RTR` messages appear in the app logs showing that the request was received.
 
 When the app is stopped on CF (e.g. `cf stop hystrix-sample`), the stream of `ping:` responses is sent to the client, and the following entries are written to the app logs, including the `RTR` entry showing the request being processed.
 
