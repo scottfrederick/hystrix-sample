@@ -1,0 +1,6 @@
+---
+applications:
+- name: hystrix-sample
+  memory: 512M
+  instances: 1
+  path: build/libs/hystrix-sample.jar
